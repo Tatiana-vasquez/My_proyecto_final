@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<section class = 'container-fluid'>
+    <nav class="navbar">
+        <h2>Quien vale más?</h2>
+    </nav>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class ='col'> Celebrity</th>
+                <th class ='col'> Elimina una</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lista in lista_de_todas_las_partidas %}
+            <tr>
+                <td>
+                    <h5> {{ lista.famosos}}</h5>
+                </td>
+                <td> <a href=" "  class = btn btn-danger btn-sm>Eliminar</a></td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</section>
+{%endblock%}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<section class = 'container-fluid'>
+    <nav class="navbar">
+        <h2>Aqui se crea la lista de celebrities</h2>
+    </nav>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class ='col'> Nombre de las niñas</th>
+                <th class ='col'> </th>
+                <th class ='col' colspan="2"> </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos | reverse %}
+            {% if g.user.id == todo.created_by%}
+            <tr>
+                <td>
+                    <h5> {{ todo.celebrity}}</h5>
+                    <p> {{ todo.desc}}</p>
+                </td>
+                <td></td>
+                <td>
+                    <a href="{{url_for('todo.update',id= todo.id  )}} " class = btn btn-info btn-sm>Editar</a>
+                </td>
+                <td>
+                    <a href="{{url_for('todo.delete', id = todo.id)}} " class = btn btn-danger btn-sm>Eliminar</a>
+                </td>
+            </tr>
+            {% endif%}
+            {% endfor%}
+                <ul>
+        <nav class="navbar">
+        <a href="{{url_for('todo.create')}} " class = 'btn btn-success'>Ingresa tu celebrity</a>
+        </nav>
+                    {% for game in lista_de_partidas: %}
+                    <li> {{game.id_celebrity_1}}</li>
+                    {% endfor %}
+                </ul>
+                </div>
+        </div>
+                    <di>
+                        <a href=" {{url_for('todo.home')}}" class=" btn btn-secondary"> Guardar</a>
+                    </di>
+        </tbody>
+    </table>
+</section>
+{%endblock%}

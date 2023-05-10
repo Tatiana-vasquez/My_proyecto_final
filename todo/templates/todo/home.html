@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content%}
+<section class = 'container-fluid'>
+    <nav class="navbar">
+        <h2>Hola {{g.user.username}}</h2>
+        <a href="{{url_for('todo.jugar_partida')}} " class = 'btn btn-success'>Tus partidas creadas</a>
+        <a href="{{url_for('todo.mis_partidas', user_id=g.user.id)}}" class = 'btn btn-success'>Mis partidas </a>
+        <a href="{{url_for('todo.crear_partida')}} " class = 'btn btn-success'>Crear partida</a>
+    </nav>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos | reverse %}
+            {% if g.user.id == todo.created_by%}
+            <tr>
+                <td>
+                    <h5> {{ todo.celebrity}}</h5>
+                    <p> {{ todo.desc}}</p>
+                </td>
+                <td> {{ todo.quien_vale_mas}}</td>
+                <td>
+                    <a href="{{url_for('todo.update',id= todo.id  )}} " class = btn btn-info btn-sm>Like</a>
+                </td>
+                <td>
+                    <a href="{{url_for('todo.delete', id= todo.id  )}} " class = btn btn-danger btn-sm>No like</a>
+                </td>
+            </tr>
+            {% endif%}
+            {% endfor%}
+        </tbody>
+    </table>
+</section>
+
+{% endblock%}

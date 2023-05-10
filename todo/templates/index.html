@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block title %} Inicio {%endblock%}
+
+{% block content%}
+     <div class="container-sm text-center">
+        <h1 class="display-6"> Bienvenida a nuestro juego</h1>
+        <p class = 'lead'> Aquí puedes jugar a las niñas, un juego divertido donde comparas entre dos
+            personajes y escoges quién vale más</p>
+
+        <hr class=" 'my-4">
+        <p> Tienes una cuenta?</p>
+
+        <div class=" 'd-flex justify-container-center">
+            <a href="{{url_for('auth.login')}} " class=" btn btn-primary mx-2"> Iniciar sesión</a>
+            <a href="{{url_for('auth.register')}}" class=" btn btn-secondary mx-2"> Registrarse</a>
+
+        </div>
+    </div>
+
+
+{% endblock%}

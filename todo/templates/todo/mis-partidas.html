@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<section class = 'container-fluid'>
+    <nav class="navbar">
+        <h2>Mis partidas creadas</h2>
+    </nav>
+    <br>
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class ='col'> Retado</th>
+                <th class ='col'> Famosos</th>
+                <th class ='col'> Creador</th>
+                <th class ='col' colspan="2"> </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nombre in usuarios %}
+        <p> Nombre del retador {{nombre}}</p>
+        {% endfor %}
+        {% for reto in famosos %}
+        <li>Reto ---> {{ reto }}</li>
+        {% endfor %}
+        {% for partida in partidas %}
+            {% if partida.created_by == g.user.id %}
+            {% set creador = User.query.filter_by(id=partida.created_by).first().username %}
+            <tr>
+                <td>
+                    <h5> {{ partida.retados}}</h5>
+                </td>
+                <td>
+                    {% for famoso in partida.famosos.split(',') %}
+                    <h5>{{ famoso }}</h5>
+                    {% endfor %}
+                </td>
+                <td>
+                    <h5>{{ creador }}</h5>
+                </td>
+                <td>
+                    <a href=" {{url_for('todo.delete', id = partida.id)}}" class = btn btn-danger btn-sm>Eliminar</a>
+                </td>
+            </tr>
+            {% endif%}
+        {% endfor %}
+
+        </tbody>
+    </table>
+</section>
+{%endblock%}
