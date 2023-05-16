@@ -9,21 +9,25 @@
                 <h5>1. Por favor, seleccione el usuario que desea retar</h5>
             {% for user in users_list %}
                 {% if g.user.id != user.id%}
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="retado" value="{{ user.id }}" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    {{ user.username }}
-                  </label>
+                <div class = 'form-group' >
+                    <label class = 'text-center mt-3 mb-3'>A quien quieres retar:</label>
+                    <select class = 'text-center mt-3 mb-3' name = 'retado'>
+                     {% for user in users_list %}
+                        {% if g.user.id != user.id%}
+                        <option value = '{{user.id}}'> {{user.username}}</option>
+                        {% endif%}
+                        {% endfor%}
+                    </select>
                 </div>
                 {% endif %}
             {% endfor %}
             </div>
             <div class="col-6">
                 <h5>2. Por favor, cree los personajes a comparar</h5>
-                {% for e in [1,2] %}
+                {% for e in [1,2,3,4,5,6,7,8] %}
                 <div class = 'form-group'>
                     <label for ='celebrity_{{ e }}'> Celebrity </label>
-                    <input type ='text' class = 'form-control' id = 'celebrity_{{ e }}' name="celebrity" value="">
+                    <input type ='text' class = 'form-control' id = 'celebrity_{{ e }}' name="celebrity" value="" required>
                 </div>
                 <div class = 'form-group'>
                     <label for ='desc_{{ e }}'> Descripción (opcional) </label>
@@ -36,21 +40,5 @@
             </div>
         </div>
     </form>
-<!---
-    <form action="/todo/crear-partida" method="post">
-        <br>
-        <br><div class = 'form-group' >
-            <label class = 'text-center mt-3 mb-3'>A quien quieres retar:</label>
-            <select class = 'text-center mt-3 mb-3' name = 'id_retado'>
-             {% for user in users_list %}
-                {% if g.user.id != user.id%}
-                <option value = '{{user.id}}'> {{user.username}}</option>
-                {% endif%}
-                {% endfor%}
-            </select>
-        </div>
-        <input type = 'submit' class = 'btn btn-primary' value=" siguiente">
-    </form>
-</section>
 {% endblock %}
 

@@ -1,5 +1,4 @@
 from sqlalchemy import ForeignKey
-
 from todo import db
 
 
@@ -21,15 +20,15 @@ class Partida(db.Model):
     created_by = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     retados = db.Column(db.Text)
     famosos = db.Column(db.Text)
+    votos = db.Column(db.Text)
 
-    def __init__(self, created_by, retados, famosos):
+    def __init__(self, created_by, retados, famosos, votos):
         self.created_by = created_by
         self.retados = retados
         self.famosos = famosos
+        self.votos = votos
 
     def __repr__(self):
         return f'<Partida:{self.famosos} >'
-
-
 
 

@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content%}
+<section class = 'container-center'>
+    <nav class="navbar">
+        <div class = 'card text-center' style = 'width: 68rem'>
+            <div class="card-header">
+                <h5 class = 'h5 card-title table-active '>Elije una de las dos </h5>
+                {% if ganador == None %}
+    <div class = 'card-group'>
+        <div class ="card-body">
+            <form action="" method="post" enctype="multipart/form-data">
+    <input type="hidden" name = 'chosen' value = "{{index_left}}">
+        <input type = 'submit' class = 'btn btn-primary btn-block' value=" {{famoso_left}}">
+    </form>
+        </div>
+    </div>
+    <div class = 'card-group'>
+        <div class ="card-body">
+          <form action="" method="post" enctype="multipart/form-data">
+        <input type="hidden" name = 'chosen' value = "{{index_right}}">
+    <input type = 'submit' class = 'btn btn-primary btn-block' value=" {{famoso_right}}">
+    </form>
+        </div>
+    </div>
+
+    {%else%}
+    <h3> Partida finalizada, tu ganadora es: {{ ganador}}</h3>
+    {%endif%}
+            </div>
+        </div>
+
+    </nav>
+
+</section>
+{%endblock%}

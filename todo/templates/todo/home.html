@@ -2,8 +2,7 @@
 {% block content%}
 <section class = 'container-fluid'>
     <nav class="navbar">
-        <h2>Hola {{g.user.username}}</h2>
-        <a href="{{url_for('todo.jugar_partida')}} " class = 'btn btn-success'>Tus partidas creadas</a>
+        <h2>Hola {{g.user.username | capitalize}}</h2>
         <a href="{{url_for('todo.mis_partidas', user_id=g.user.id)}}" class = 'btn btn-success'>Mis partidas </a>
         <a href="{{url_for('todo.crear_partida')}} " class = 'btn btn-success'>Crear partida</a>
     </nav>
